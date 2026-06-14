@@ -10,3 +10,127 @@ Requirements:
 * For now, both links can point to `#` (no page creation required).
 * Do not create any new templates, routes, or views.
 * Keep the change minimal and consistent with the existing code style.
+
+git add .
+
+git commit -m "landing: add sections Privacy Policy & Terms & Conditions"
+
+===================================================================================
+Create a Privacy Policy page and link it from the footer "Privacy Policy" link.
+
+Requirements:
+
+* Create a new Privacy Policy template/privacy-policy.html following the existing website structure.
+
+* Match the current website theme, styling, and layout.
+
+* Add the following generic content sections:
+
+  1. Introduction
+
+     * Explain that the website respects user privacy and is committed to protecting personal information.
+
+  2. Information We Collect
+
+     * Name, email address, contact details, and any information voluntarily submitted through forms.
+
+  3. How We Use Information
+
+     * To provide services, improve user experience, respond to inquiries, and communicate important updates.
+
+  4. Cookies and Tracking Technologies
+
+     * Explain that cookies may be used to enhance website functionality and analyze usage patterns.
+
+  5. Third-Party Services
+
+     * State that third-party tools or services may be used and may collect information according to their own privacy policies.
+
+  6. Data Security
+
+     * Mention that reasonable measures are taken to protect user information from unauthorized access or disclosure.
+
+  7. User Rights
+
+     * Users may request access, correction, or deletion of their personal information where applicable.
+
+  8. Changes to This Policy
+
+     * The Privacy Policy may be updated from time to time, and changes will be reflected on this page.
+
+  9. Contact Us
+
+     * For privacy-related questions, users can contact the website administrator.
+
+* Update the footer "Privacy Policy" link to point to this page.
+
+* Keep the content professional, concise, and generic (no legal-specific claims).
+
+* Follow existing code style and project structure.
+
+
+=============================================================================
+Create a Terms & Conditions page and link it from the footer "Terms & Conditions" link.
+
+Requirements:
+
+* Create a new Terms & Conditions template/terms-and-conditions following the existing website structure.
+
+* Match the current website theme, styling, and layout.
+
+* Add the following generic content sections:
+
+  1. Acceptance of Terms
+
+     * By accessing or using the website, users agree to comply with these Terms & Conditions.
+
+  2. Use of the Website
+
+     * Users must use the website lawfully and not engage in activities that may harm the website or its users.
+
+  3. Intellectual Property
+
+     * Website content, branding, and materials are owned by the website owner unless otherwise stated.
+
+  4. User Responsibilities
+
+     * Users are responsible for the accuracy of information they provide and for maintaining the security of their accounts, if applicable.
+
+  5. Limitation of Liability
+
+     * The website is provided on an "as is" basis, and the website owner is not liable for damages arising from its use.
+
+  6. Third-Party Links
+
+     * The website may contain links to third-party websites, which are governed by their own terms and policies.
+
+  7. Termination of Access
+
+     * Access to the website may be restricted or terminated for violations of these terms.
+
+  8. Changes to Terms
+
+     * These Terms & Conditions may be updated from time to time, and continued use of the website constitutes acceptance of any changes.
+
+  9. Contact Information
+
+     * Users can contact the website administrator for questions regarding these Terms & Conditions.
+
+* Update the footer "Terms & Conditions" link to point to this page.
+
+* Keep the content professional, concise, and generic (not legal advice).
+
+* Follow existing code style and project structure.
+
+=======================================================================
+Refer the image and Update only the Hero section of the landing page to match the provided reference image as closely as possible.
+
+Requirements:
+
+* Modify @templates/landing.html for the Hero section structure/content.
+* Modify @static/css/style.css for Hero section styling.
+* Replicate the layout, spacing, typography, colors, buttons, alignment, and visual hierarchy from the image while keeping it consistent with the existing website theme.
+* Make the Hero section fully responsive.
+* Do not modify any other section of the website.
+* Do not change existing functionality outside the Hero section.
+* Reuse existing CSS classes/components where appropriate and keep the implementation clean and maintainable.

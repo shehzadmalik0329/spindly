@@ -1,0 +1,12 @@
+Update the landing page footer in @templates/base.html.
+
+Requirements:
+
+* Add two new footer links:
+
+  * Privacy Policy
+  * Terms & Conditions
+* Place them alongside the existing footer links and follow the current styling/layout.
+* For now, both links can point to `#` (no page creation required).
+* Do not create any new templates, routes, or views.
+* Keep the change minimal and consistent with the existing code style.

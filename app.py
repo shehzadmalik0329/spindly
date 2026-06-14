@@ -22,6 +22,11 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/privacy-policy")
+def privacy_policy():
+    return render_template("privacy-policy.html")
+
+
 # ------------------------------------------------------------------ #
 # Placeholder routes — students will implement these                  #
 # ------------------------------------------------------------------ #

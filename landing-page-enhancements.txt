@@ -134,3 +134,17 @@ Requirements:
 * Do not modify any other section of the website.
 * Do not change existing functionality outside the Hero section.
 * Reuse existing CSS classes/components where appropriate and keep the implementation clean and maintainable.
+
+==========================================================================
+Implement the "See How It Works" button functionality in @templates/landing.html.
+
+Requirements:
+
+* On click, open a modal that plays this YouTube video:
+  https://youtu.be/-Lt-ntUDj-g?si=lVjJKi8fgaze973T
+* Add a close button/icon inside the modal.
+* Close the modal when clicking outside of it.
+* Stop the video completely when the modal is closed (it must not continue playing in the background).
+* Style the modal to match the existing website theme and make it responsive.
+* Keep changes minimal and limited to this feature only.
+* Do not modify any other part of the website or application.

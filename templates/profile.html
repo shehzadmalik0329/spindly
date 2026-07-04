@@ -1,0 +1,327 @@
+{% extends "base.html" %}
+{% block title %}Profile — Spendly{% endblock %}
+
+{% block head %}
+<style>
+  .profile-layout {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Hero card */
+  .profile-hero {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .profile-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--paper-card);
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.03em;
+  }
+
+  .profile-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+  }
+
+  .profile-email {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .member-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--accent);
+    background: var(--accent-light);
+    border-radius: 999px;
+    padding: 0.2em 0.8em;
+    font-weight: 500;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-tile {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .stat-value--sm { font-size: 1.25rem; }
+
+  .stat-unit {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+  }
+
+  /* Section cards */
+  .section-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .section-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* Expense table */
+  .table-scroll { overflow-x: auto; }
+
+  .expense-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .expense-table th {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .expense-table td {
+    padding: 0.875rem 1.5rem;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--ink);
+  }
+
+  .expense-table tbody tr:last-child td { border-bottom: none; }
+
+  .expense-table tbody tr:hover { background: var(--paper); }
+
+  .th-right { text-align: right; }
+
+  .date-cell {
+    color: var(--ink-faint);
+    font-size: 0.82rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .amount-cell {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* Category breakdown */
+  .cat-breakdown {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .breakdown-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+  }
+
+  .breakdown-amount {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .breakdown-track {
+    height: 6px;
+    background: var(--border-soft);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .breakdown-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--accent);
+    width: 0;
+    transition: width 0.6s ease;
+  }
+
+  .breakdown-fill-food          { background: var(--cat-food); }
+  .breakdown-fill-transport     { background: var(--cat-transport); }
+  .breakdown-fill-bills         { background: var(--cat-bills); }
+  .breakdown-fill-health        { background: var(--cat-health); }
+  .breakdown-fill-entertainment { background: var(--cat-entertainment); }
+  .breakdown-fill-shopping      { background: var(--cat-shopping); }
+  .breakdown-fill-other         { background: var(--cat-other); }
+
+  /* Sign out row */
+  .profile-signout {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .profile-hero { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .stats-row { grid-template-columns: 1fr; }
+    .expense-table th,
+    .expense-table td { padding: 0.75rem 1rem; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="profile-layout">
+
+  <!-- User info card -->
+  <div class="profile-hero">
+    <div class="profile-avatar">{{ user.initials }}</div>
+    <div>
+      <h1 class="profile-name">{{ user.name }}</h1>
+      <p class="profile-email">{{ user.email }}</p>
+      <span class="member-badge">Member since {{ user.member_since }}</span>
+    </div>
+  </div>
+
+  <!-- Summary stats -->
+  <div class="stats-row">
+    <div class="stat-tile">
+      <span class="stat-label">Total Spent</span>
+      <span class="stat-value"><span class="stat-unit">₹</span>{{ stats.total_spent }}</span>
+    </div>
+    <div class="stat-tile">
+      <span class="stat-label">Transactions</span>
+      <span class="stat-value">{{ stats.transaction_count }}</span>
+    </div>
+    <div class="stat-tile">
+      <span class="stat-label">Top Category</span>
+      <span class="stat-value stat-value--sm">{{ stats.top_category }}</span>
+    </div>
+  </div>
+
+  <!-- Recent expenses -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2 class="section-title">Recent Expenses</h2>
+    </div>
+    <div class="table-scroll">
+      <table class="expense-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th class="th-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for e in expenses %}
+          <tr>
+            <td class="date-cell">{{ e.date }}</td>
+            <td>{{ e.description }}</td>
+            <td><span class="badge badge-{{ e.category | lower }}">{{ e.category }}</span></td>
+            <td class="amount-cell">₹{{ e.amount }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Category breakdown -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2 class="section-title">Spending by Category</h2>
+    </div>
+    <div class="cat-breakdown">
+      {% for cat in categories %}
+      <div>
+        <div class="breakdown-top">
+          <span class="badge badge-{{ cat.name | lower }}">{{ cat.name }}</span>
+          <span class="breakdown-amount">₹{{ cat.amount }}</span>
+        </div>
+        <div class="breakdown-track">
+          <div class="breakdown-fill breakdown-fill-{{ cat.name | lower }}"
+               data-pct="{{ cat.pct }}"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Sign out -->
+  <div class="profile-signout">
+    <a href="{{ url_for('logout') }}" class="btn-ghost">Sign out</a>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  document.querySelectorAll('.breakdown-fill').forEach(function (el) {
+    el.style.width = (el.dataset.pct || 0) + '%';
+  });
+}());
+</script>
+{% endblock %}

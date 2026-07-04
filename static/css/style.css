@@ -28,6 +28,22 @@
     --radius-sm: 6px;
     --radius-md: 12px;
     --radius-lg: 20px;
+
+    /* Category color tokens */
+    --cat-food:              #2d6a4f;
+    --cat-food-bg:           #e8f5ef;
+    --cat-transport:         #b07d2e;
+    --cat-transport-bg:      var(--accent-2-light);
+    --cat-bills:             #5046a6;
+    --cat-bills-bg:          #eeecf9;
+    --cat-health:            #0e7a75;
+    --cat-health-bg:         #e4f4f3;
+    --cat-entertainment:     #b84c1e;
+    --cat-entertainment-bg:  #fceee8;
+    --cat-shopping:          #7a4f1a;
+    --cat-shopping-bg:       #f9f0e3;
+    --cat-other:             var(--ink-muted);
+    --cat-other-bg:          var(--border-soft);
 }
 
 /* ------------------------------------------------------------------ */
@@ -513,6 +529,29 @@ a { color: inherit; text-decoration: none; }
 }
 
 .btn-submit:hover { background: var(--accent); }
+
+/* ------------------------------------------------------------------ */
+/* Category badges                                                     */
+/* ------------------------------------------------------------------ */
+
+.badge {
+    display: inline-block;
+    padding: 0.2em 0.65em;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+}
+
+.badge-food          { color: var(--cat-food);          background: var(--cat-food-bg); }
+.badge-transport     { color: var(--cat-transport);     background: var(--cat-transport-bg); }
+.badge-bills         { color: var(--cat-bills);         background: var(--cat-bills-bg); }
+.badge-health        { color: var(--cat-health);        background: var(--cat-health-bg); }
+.badge-entertainment { color: var(--cat-entertainment); background: var(--cat-entertainment-bg); }
+.badge-shopping      { color: var(--cat-shopping);      background: var(--cat-shopping-bg); }
+.badge-other         { color: var(--cat-other);         background: var(--cat-other-bg); }
 
 .auth-switch {
     text-align: center;
